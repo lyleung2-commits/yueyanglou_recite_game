@@ -622,3 +622,28 @@
             card.classList.remove('scale-95');
 
             setTimeout(() => {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                card.classList.add('scale-95');
+
+                setTimeout(() => {
+                    if (currentMode === 'sequential' && currentParaIdx < PARAGRAPHS.length - 1) {
+                        currentParaIdx++;
+                        loadParagraph(currentParaIdx);
+                    } else {
+                        showHomeScreen();
+                    }
+                }, 600);
+            }, 2300);
+        }
+
+        // Register functions globally to prevent window reference issues
+        window.startGameMode = startGameMode;
+        window.showHomeScreen = showHomeScreen;
+        window.toggleTimer = toggleTimer;
+        window.resetTimer = resetTimer;
+        window.triggerHint = triggerHint;
+        window.resetCurrentParagraph = resetCurrentParagraph;
+        window.togglePeekModal = togglePeekModal;
+    </script>
+</body>
+</html>
